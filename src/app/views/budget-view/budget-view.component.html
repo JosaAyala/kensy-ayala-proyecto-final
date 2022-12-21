@@ -1,0 +1,29 @@
+<div class="main-container">
+  <br class="" />
+  <br class="" />
+  <div class="budget-card">
+    <app-card-budget
+      [budget]="defaulBudget"
+      (onRemove)="removeBudget($event)"
+      (onSaveChanges)="saveBudget($event)"
+    ></app-card-budget>
+  </div>
+
+  <br class="" />
+  <br class="" />
+  <h1 class="">Otros Presupuestos</h1>
+  <button mat-raised-button color="primary" (click)="openDialog()">
+    Agregar presupuesto
+  </button>
+  <br class="" />
+  <br class="" />
+  <div class="budget-card">
+    <app-card-budget
+      [budget]="budget"
+      (onRemove)="removeBudget($event)"
+      (onSaveChanges)="saveBudget($event)"
+      *ngFor="let budget of budgets"
+    ></app-card-budget>
+  </div>
+  <br class="" />
+</div>

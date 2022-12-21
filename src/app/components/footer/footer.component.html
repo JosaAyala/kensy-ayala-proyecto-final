@@ -1,0 +1,21 @@
+<div class="footer">
+  <mat-toolbar>
+    <div class="content">
+      <span
+        >Total Ingresos:
+        <strong
+          >{{ summaryBalance.currency }} {{ summaryBalance.ingresos | number }}</strong
+        >
+        | Total de Gastos:
+        <strong
+          >{{ summaryBalance.currency }} {{ summaryBalance.gastos | number }}</strong
+        >
+        | Balance:
+        <strong
+          >{{ summaryBalance.currency }}
+          {{ (summaryBalance.ingresos - summaryBalance.gastos) | number }}</strong
+        >
+      </span>
+    </div>
+  </mat-toolbar>
+</div>

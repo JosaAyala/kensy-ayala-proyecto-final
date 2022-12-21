@@ -1,0 +1,142 @@
+<div class="main-container" *ngIf="mainBudget.budget === 0">
+  <h3 class="">Agregar un presupuesto inicial antes de agregar registros</h3>
+</div>
+
+<div class="main-container" *ngIf="mainBudget.budget > 0">
+  <div class="" *ngIf="isCreating === true || isEditing === true">
+    <div class="buttons-form">
+      <button mat-raised-button color="basic" (click)="onClickCancel()">
+        Cancelar
+      </button>
+      <button mat-raised-button color="primary" (click)="onClickSave()">
+        Guardar
+      </button>
+    </div>
+    <br class="" />
+    <br class="" />
+    <div class="fields">
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo de registro</mat-label>
+        <mat-select
+          (valueChange)="onSelectRecordType($event)"
+          [(ngModel)]="model.recordType"
+          name="recordType"
+        >
+          <mat-option
+            [value]="type.id"
+            *ngFor="let type of configs.recordTypes"
+            >{{ type.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Categoria</mat-label>
+        <mat-select
+          [(ngModel)]="model.categoryCode"
+          name="categoryCode"
+          [disabled]="model.recordType === ''"
+          (valueChange)="onSelectCategory($event)"
+        >
+          <mat-option
+            [value]="categoria.id"
+            *ngFor="let categoria of categorias"
+            >{{ categoria.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="field-notes">
+      <mat-form-field appearance="fill">
+        <mat-label>Notas</mat-label>
+        <textarea
+          [disabled]="model.categoryCode === ''"
+          matInput
+          [(ngModel)]="model.notes"
+          name="notes"
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="fields">
+      <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>Monto</mat-label>
+        <input
+          [disabled]="model.categoryCode === ''"
+          matInput
+          type="number"
+          class="amount-right-align"
+          [(ngModel)]="model.amount"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha</mat-label>
+        <input
+          matInput
+          [matDatepicker]="dp"
+          [disabled]="model.categoryCode === ''"
+          [(ngModel)]="model.date"
+        />
+        <mat-hint>MMMM DD, YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="" *ngIf="isCreating === false && isEditing === false">
+    <button mat-raised-button color="primary" (click)="onClickNewRecord()">
+      Nuevo registro
+    </button>
+    <br class="" />
+    <br class="" />
+    <div class="records">
+      <mat-list class="list-records">
+        <mat-list-item style="height: auto" *ngFor="let record of records">
+          <div class="item-container">
+            <mat-icon
+              style="color: green"
+              matListItemIcon
+              *ngIf="record.recordType === 'INCOME'"
+              >local_atm</mat-icon
+            >
+            <mat-icon
+              style="color: red"
+              matListItemIcon
+              *ngIf="record.recordType === 'EXPENSE'"
+              >play_for_work</mat-icon
+            >
+            <div class="">
+              <div class="description" matListItemTitle>
+                <strong class="">{{ record.categoryName }}</strong>
+              </div>
+              <div class="description" matListItemTitle>
+                <i class="">{{ record.notes }}</i>
+              </div>
+              <div matListItemLine class="date-record">
+                {{ record.date | date }}
+              </div>
+            </div>
+            <div class="amount">{{ record.amount }}</div>
+            <div class="options">
+              <button mat-raised-button (click)="onClickUpdate(record)">
+                Editar
+              </button>
+              <button
+                mat-raised-button
+                color="warn"
+                (click)="onClickRemove(record.id)"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+  <!--  -->
+
+  <!--  -->
+</div>

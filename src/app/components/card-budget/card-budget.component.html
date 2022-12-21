@@ -1,0 +1,53 @@
+<mat-card class="budget-card">
+  <mat-card-header>
+    <mat-card-title>{{ budget.budgetName }}</mat-card-title>
+    <mat-card-subtitle
+      *ngIf="budget.referencia !== undefined || budget.referencia !== null"
+      >{{ budget.referencia }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <div class="" *ngIf="!isEditing">
+      <h2 class="">{{ budget.currencySymbol }} {{ budget.budget | number }}</h2>
+    </div>
+
+    <div class="" *ngIf="isEditing">
+      <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>Monto</mat-label>
+        <input
+          matInput
+          type="number"
+          class="amount-right-align"
+          [(ngModel)]="budget.budget"
+        />
+      </mat-form-field>
+    </div>
+
+    <mat-divider></mat-divider>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="warn"
+      *ngIf="budget.isDefault ? false : !isEditing ? true : false"
+      (click)="removeBudget()"
+    >
+      Eliminar
+    </button>
+    <button mat-raised-button *ngIf="!isEditing" (click)="editBudget()">
+      Editar
+    </button>
+    <button mat-raised-button *ngIf="isEditing" (click)="cancel()">
+      Cancelar
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      *ngIf="isEditing"
+      (click)="saveBudget()"
+    >
+      Guardar
+    </button>
+  </mat-card-actions>
+</mat-card>
+<br class="" />

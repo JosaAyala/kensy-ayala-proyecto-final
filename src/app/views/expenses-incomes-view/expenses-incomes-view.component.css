@@ -1,0 +1,77 @@
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+.amount-right-align {
+  text-align: right;
+}
+
+.main-container {
+  padding-top: 25px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 25px;
+}
+
+.main-container .buttons-form {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.main-container .fields {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  column-gap: 10px;
+}
+
+.main-container .field-notes {
+  display: grid;
+  grid-template-columns: 600px;
+}
+
+.main-container .filters {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.main-container .records .list-records {
+  height: fit-content;
+  overflow-y: auto;
+}
+
+.main-container .records .list-records .item-container {
+  display: grid;
+  grid-template-columns: 75px 300px 150px auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 10px;
+}
+
+.main-container .records .list-records .item-container .description {
+  word-break: break-all;
+}
+
+.main-container .records .list-records .item-container .date-record {
+  color: #65647c;
+}
+
+.main-container .records .list-records .item-container .amount {
+  text-align: center;
+}
+
+.main-container .records .list-records .item-container .options {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+}

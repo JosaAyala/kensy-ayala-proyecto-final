@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "expenses-tracking-b39a1": {
+      "hosting": {
+        "kensy-ayala-proyecto-final": [
+          "expenses-tracking-b39a1"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "expenses-tracking-b39a1"
+  }
+}

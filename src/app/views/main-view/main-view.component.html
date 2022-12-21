@@ -1,0 +1,51 @@
+<div class="main-container">
+  <div class="header">
+    <app-header></app-header>
+  </div>
+
+  <div class="content">
+    <mat-tab-group mat-align-tabs="center" [selectedIndex]="0">
+      <mat-tab style="position: sticky; z-index: 100">
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">monetization_on</mat-icon>
+          Presupuesto
+        </ng-template>
+        <div class="">
+          <br class="" />
+          <app-budget-view (onUpdateFooter)="updateFooter()"></app-budget-view>
+          <br class="" />
+        </div>
+      </mat-tab>
+
+      <mat-tab style="position: sticky; z-index: 100">
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">format_list_bulleted</mat-icon>
+          Registro de Ingresos/Gastos
+        </ng-template>
+        <div class="">
+          <br class="" />
+          <app-expenses-incomes-view (onUpdateFooter)="updateFooter()"></app-expenses-incomes-view>
+          <br class="" />
+        </div>
+      </mat-tab>
+
+      <!-- <mat-tab style="position: sticky; z-index: 100">
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">donut_small</mat-icon>
+          Balance
+        </ng-template>
+
+        <div class="">
+          <br class="" />
+          <app-balance-view></app-balance-view>
+          <br class="" />
+        </div>
+      </mat-tab> -->
+    </mat-tab-group>
+  </div>
+  <div class="footer">
+    <app-footer [budgets]="budgets" [records]="records" [summaryBalance]="summaryBalance"></app-footer>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

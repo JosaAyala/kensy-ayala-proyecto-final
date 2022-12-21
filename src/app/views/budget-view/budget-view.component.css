@@ -1,0 +1,16 @@
+.main-container {
+  padding-top: 25px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 25px;
+}
+
+.main-container .budget-card {
+  min-width: 400px;
+  max-width: 400px;
+}
+
+.dialog-div {
+  display: flex;
+  flex-direction: column;
+}
