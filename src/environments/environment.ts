@@ -11,7 +11,7 @@ export const environment = {
     authDomain: 'expenses-tracking-b39a1.firebaseapp.com',
     messagingSenderId: '1021356641016',
   },
-  production: true
+  production: false
 };
 
 /*
