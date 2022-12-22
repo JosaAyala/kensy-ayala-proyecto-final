@@ -31,8 +31,7 @@ export class MainViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getBudgets();
-    this.getRecords();
+    this.updateFooter();
   }
 
   getRecords() {
@@ -93,6 +92,7 @@ export class MainViewComponent implements OnInit {
   }
 
   async updateFooter() {
+    debugger;
     this.incomeExpenseTrackingService.get_budgets().subscribe((result) => {
       if (result.length > 0) {
         let budgetDocs: Budget[] = [];
@@ -122,26 +122,25 @@ export class MainViewComponent implements OnInit {
                 registros.push(document);
               });
               this.records = registros;
-
-              let incomes = 0.0;
-              let expenses = 0.0;
-
-              this.budgets.forEach((budget) => {
-                incomes = incomes + budget.budget;
-              });
-
-              this.records.forEach((record) => {
-                if (record.recordType === 'INCOME') {
-                  incomes = incomes + record.amount;
-                }
-                if (record.recordType === 'EXPENSE') {
-                  expenses = expenses + record.amount;
-                }
-              });
-
-              this.summaryBalance.gastos = expenses;
-              this.summaryBalance.ingresos = incomes;
             }
+            let incomes = 0.0;
+            let expenses = 0.0;
+
+            this.budgets.forEach((budget) => {
+              incomes = incomes + budget.budget;
+            });
+
+            this.records.forEach((record) => {
+              if (record.recordType === 'INCOME') {
+                incomes = incomes + record.amount;
+              }
+              if (record.recordType === 'EXPENSE') {
+                expenses = expenses + record.amount;
+              }
+            });
+
+            this.summaryBalance.gastos = expenses;
+            this.summaryBalance.ingresos = incomes;
           });
       }
     });

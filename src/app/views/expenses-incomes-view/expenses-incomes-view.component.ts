@@ -153,6 +153,7 @@ export class ExpensesIncomesViewComponent implements OnInit {
     this.incomeExpenseTrackingService
       .remove_record(id)
       .then(() => {
+        
         this.getBudgets();
         this.getRecords();
         this.updateFooter();
